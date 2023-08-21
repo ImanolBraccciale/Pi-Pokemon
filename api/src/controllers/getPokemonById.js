@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const getPokemonById = async (req, res) => {
   const { id } = req.params;
-  try {
+  try { 
     if (id.length > 5) {
       const dbPokeID = await Pokemon.findByPk(id, {
         include: [
