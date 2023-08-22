@@ -1,32 +1,31 @@
 const axios = require("axios");
-const Pokemon = require("../db");
+const { Pokemon, Type } = require("../db");
 const mapPokemon = require("./helpers/mapPokemon");
 
-const getPokemonByName = async (req ) => {
+const getPokemonByName = async (req, res) => {
  
-  let params;
-  let poke = [];
-  let pokemon;
-
-if (req.query.hasOwnProperty("name")) {
-        params = req.query.name;
-
+        let { name } = req.query;
         try {
-          //api
-          const {data} = await axios(`https://pokeapi.co/api/v2/pokemon/${params}`)
-          pokemon= data
-
-          //base de datos
-          if (pokemon?.message) {
-            pokemon=  await Pokemon.findAll({ where: { name: params } });
+            let searchPokeNameDB = await Pokemon.findAll({
+                where: { name:name },
+                include: { model: Type, as: 'pokemonTypes', attributes: ['name',"id"], through: { attributes: [] } }
+            });
+          if (searchPokeNameDB.length ) {
+            return searchPokeNameDB
           }
-         let pok = mapPokemon(pokemon);
-          poke.push(pok);
-         return poke;
 
+            const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            let pokemon = data;
+
+            if (pokemon) {
+                let pok = mapPokemon(pokemon);
+                return pok;
+            }
+
+            return res.status(404).json({ error: "Pokemon not found" });
         } catch (error) {
-          return error;
+            return res.status(500).json({ error: error.message });
         }
-}
-}
+};
+
 module.exports = getPokemonByName;

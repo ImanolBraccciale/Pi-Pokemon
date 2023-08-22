@@ -6,24 +6,15 @@ const getPokemonById = async (req, res) => {
   const { id } = req.params;
   try { 
     if (id.length > 5) {
-      const dbPokeID = await Pokemon.findByPk(id, {
-        include: [
-          {
-            model: Type,
-            as: "pokemonTypes",
-            attributes: ["name"],
-            through: { 
-              attributes: []
-            }
-          }
-        ]
-      });
-        return res.status(200).json(dbPokeID);
-      // }
+ const pokemonDB=  await Pokemon.findAll({
+                where: { id:id },
+                include: { model: Type, as: 'pokemonTypes', attributes: ['name',"id"], through: { attributes: [] } }
+            });
+      return pokemonDB
     } else {
       const {data} = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const resp = mapPokemon(data);
-      return resp;
+     return res.status(200).json(resp);
     }
   } catch (error) {
     return res.status(500).json({ error: "Error en el servidor" });

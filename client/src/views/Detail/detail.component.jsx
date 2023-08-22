@@ -1,4 +1,4 @@
-function create(params) {
+function Detail(params) {
   return (
     <div className="create">
       <p>Este es el create</p>
@@ -6,3 +6,5 @@ function create(params) {
     </div>
   )
 }
+
+export default Detail

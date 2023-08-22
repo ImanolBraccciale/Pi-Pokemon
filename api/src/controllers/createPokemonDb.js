@@ -1,21 +1,22 @@
 const { Pokemon, Type } = require("../db");
 
 const createPokemonDb = async ({ id, name, image, hp, attack, defense, speed, height, weight, type1, type2 }) => {
+  try {
+    // Buscar los tipos en la base de datos
+    const typePokemon1 = type1 ? await Type.findByPk(type1) : null;
 
-  const typePokemon1 = await Type.findByPk(type1);
+    if (!typePokemon1) {
+      throw new Error(`Tipo con ID ${type1} no encontrado.`);
+    }
 
-  if (!typePokemon1) {
-    throw new Error(`Type with ID ${type1} not found.`);
-  }
+    const typePokemon2 = type2 ? await Type.findByPk(type2) : null;
 
-  const typePokemon2 = type2 ? await Type.findByPk(type2) : null;
+    if (type2 && !typePokemon2) {
+      throw new Error(`Tipo con ID ${type2} no encontrado.`);
+    }
 
-  if (type2 && !typePokemon2) {
-    throw new Error(`Type with ID ${type2} not found.`);
-  }
-
-  const pokemon = await Pokemon.create(
-    {
+    // Crear el registro del Pokémon
+    const pokemon = await Pokemon.create({
       id,
       name,
       image,
@@ -25,29 +26,27 @@ const createPokemonDb = async ({ id, name, image, hp, attack, defense, speed, he
       speed,
       height,
       weight,
+    });
+
+    // Asociar tipos al Pokémon
+    if (typePokemon1) {
+      await pokemon.addPokemonType(typePokemon1);
     }
-  );
-  if (typePokemon1) {
-    await pokemon.addPokemonType(typePokemon1);
-  }
-  if (typePokemon2) {
-    await pokemon.addPokemonType(typePokemon2);
-  }
-  console.log(pokemon);
-  pokemon.save()
+    if (typePokemon2) {
+      await pokemon.addPokemonType(typePokemon2);
+    }
 
-return pokemon
+    // Guardar los cambios en la base de datos
+    await pokemon.save();
 
-  //   return await Pokemon.findByPk(id, {
-  //   include: [
-  //     {
-  //       model: Type,
-  //       as: "pokemonTypes",
-  //       attributes: ["name"],
-  //       through: { attributes: [] },
-  //     },
-  //   ],
-  // });
+    // Concatenar nombres de tipos
+    const tipos = typePokemon1.name.concat(typePokemon2 ? `, ${typePokemon2.name}` : '');
+
+    // Devolver los datos del Pokémon y tipos
+    return { ...pokemon.dataValues, tipos };
+  } catch (error) {
+    throw error; // Relanzar el error para manejo posterior
+  }
 };
 
 module.exports = createPokemonDb;

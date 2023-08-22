@@ -7,3 +7,5 @@ function landing(params) {
     </div>
   )
 }
+
+export default landing

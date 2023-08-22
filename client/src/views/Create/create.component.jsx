@@ -7,3 +7,5 @@ function create(params) {
     </div>
   )
 }
+
+export default create
