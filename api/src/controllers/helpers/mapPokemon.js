@@ -1,7 +1,15 @@
  const mapPokemon = (pokemons) => {
 
     const { id, name, sprites, stats, height, weight,types } = pokemons;
+ const regex = /type\/(\d+)\//
 
+const newTypes = types.map(({type}) => {
+       const id = type.url.match(regex)[1]
+        return {
+          id : parseInt(id),
+          name : type.name
+        }
+    } );
      return {
       id,
       name,
@@ -13,7 +21,7 @@
       height,
       weight,
       //que busque en el array todos los tipos que tenga y traer el nombre
-      types:types?.map((t) => t.type.name).join( " & ")
+      types: newTypes
      }
   }
 

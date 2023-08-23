@@ -5,10 +5,10 @@ const mapPokemon = require("./helpers/mapPokemon");
 const getPokemonByName = async (req, res) => {
  
         let { name } = req.query;
-        try {
+
             let searchPokeNameDB = await Pokemon.findAll({
                 where: { name:name },
-                include: { model: Type, as: 'pokemonTypes', attributes: ['name',"id"], through: { attributes: [] } }
+                include: { model: Type, attributes: ['name',"id"], through: { attributes: [] } }
             });
           if (searchPokeNameDB.length ) {
             return searchPokeNameDB
@@ -18,14 +18,13 @@ const getPokemonByName = async (req, res) => {
             let pokemon = data;
 
             if (pokemon) {
+              let poke = []
                 let pok = mapPokemon(pokemon);
-                return pok;
+                poke.push(pok)
+                return poke;
             }
 
-            return res.status(404).json({ error: "Pokemon not found" });
-        } catch (error) {
-            return res.status(500).json({ error: error.message });
-        }
+ 
 };
 
 module.exports = getPokemonByName;

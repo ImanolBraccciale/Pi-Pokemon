@@ -1,6 +1,6 @@
 const { Pokemon, Type } = require("../db");
 
-const createPokemonDb = async ({ id, name, image, hp, attack, defense, speed, height, weight, type1, type2 }) => {
+const createPokemonDb = async ({ id, name, sprites, hp, attack, defense, speed, height, weight, type1, type2 }) => {
   try {
     // Buscar los tipos en la base de datos
     const typePokemon1 = type1 ? await Type.findByPk(type1) : null;
@@ -19,7 +19,7 @@ const createPokemonDb = async ({ id, name, image, hp, attack, defense, speed, he
     const pokemon = await Pokemon.create({
       id,
       name,
-      image,
+      sprites,
       hp,
       attack,
       defense,
@@ -30,10 +30,10 @@ const createPokemonDb = async ({ id, name, image, hp, attack, defense, speed, he
 
     // Asociar tipos al Pokémon
     if (typePokemon1) {
-      await pokemon.addPokemonType(typePokemon1);
+      await pokemon.addType(typePokemon1);
     }
     if (typePokemon2) {
-      await pokemon.addPokemonType(typePokemon2);
+      await pokemon.addType(typePokemon2);
     }
 
     // Guardar los cambios en la base de datos

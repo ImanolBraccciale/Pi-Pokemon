@@ -15,7 +15,7 @@ export function getPokemon() {
 
 export function getTypes() {
   return async function (dispatch) {
-    const response = await axios("http://localhost:3001/pokemons/types")
+    const response = await axios("http://localhost:3001/types")
     return dispatch({
       type:"GET_TYPES",
       payload:response.data
@@ -24,23 +24,37 @@ export function getTypes() {
 }
 
 export function filterType(payload) {
+
   return {
     type: "FILTER_BY_TYPE",
-    payload
+    payload:payload
   }
 }
 
-// export function getPokemonByName(name) {
-//   return async function (dispatch) {
-//     const response =await axios(`http://localhost:3001/pokemons/name?name=${name}`)
+export function getPokemonByName(name) {
+  return async function (dispatch) {
+    const response =await axios(`http://localhost:3001/pokemons/name?name=${name}`)
 
-//     return dispatch({
-//       type:"GET_POKEMON_NAME",
-//       payload:response.data
-//     })
-//   }
-// }
+    return dispatch({
+      type:"GET_POKEMON_NAME",
+      payload:response.data
+    })
+  }
+}
 
+export function orderByAttack(payload) {
+  return {
+    type :"ORDER_BY_ATTACK" ,  
+     payload
+  }
+}
+
+export function orderByName(payload) {
+  return {
+    type :  'ORDER_BY_NAME',
+    payload
+  }
+}
 // export function postPokemon(payload) {
 //   return async function (dispatch) {
 //     const response =await axios(`http://localhost:3001/pokemons`,payload)
@@ -64,12 +78,6 @@ export function filterType(payload) {
 //   }
 // }
 
-// export function orderByAttack(payload) {
-//   return {
-//     type :"ORDER_BY_ATTACK" ,  
-//      payload
-//   }
-// }
 
 // export function filterCreated(payload) {
 //   return {
@@ -78,9 +86,4 @@ export function filterType(payload) {
 //   }
 // }
 
-// export function orderName(payload) {
-//   return {
-//     type : 'ORDER_BY_NAME',  
-//     payload
-//   }
-// }
+ 

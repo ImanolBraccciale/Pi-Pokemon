@@ -1,14 +1,18 @@
+import FilterComponent from "../Filter/filterTypes"
+import FilterAttack from "../Filter/filterAttack";
+import Search from "../Search/search.components";
+import React from "react";
+import FilterName from "../Filter/filterName";
+function Navbar({ onSearch }) {
 
-function Navbar({ handleChange, handleSubmit }) {
   return (
-    <div className="search-box">
-      <form onChange={handleChange} >
-        <input placeholder='Busqueda...' type="search" />
-        <button type='submit' onClick={handleSubmit}>Buscar</button>
-      </form>
-
-    </div>
-  )
+    <>
+      <FilterName />
+      <FilterAttack />
+      <FilterComponent />
+      <Search onSearch={onSearch} />
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;

@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       allowNull: false, //quiero que este campo sea obligatorio
       unique:true, //especifico que el nombre de cada pokemon sera unico
     },
-    image:{
+    sprites:{
       type:DataTypes.STRING,
        allowNull:false
     },
