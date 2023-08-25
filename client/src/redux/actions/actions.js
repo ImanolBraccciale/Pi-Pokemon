@@ -54,7 +54,28 @@ export function orderByName(payload) {
     type :  'ORDER_BY_NAME',
     payload
   }
+
 }
+
+
+export function filterByOrigin(payload) {
+  return {
+    type : 'FILTER_BY_ORIGIN',  
+    payload
+  }
+}
+
+export function postedPokemon() {
+
+  return async function (dispatch) {
+    const response = axios("http://localhost:3001/pokemons")
+    return dispatch({
+      type:'POSTED_POKEMON',
+      payload:response.data
+    })
+  }
+  }
+
 // export function postPokemon(payload) {
 //   return async function (dispatch) {
 //     const response =await axios(`http://localhost:3001/pokemons`,payload)

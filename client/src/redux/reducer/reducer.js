@@ -27,7 +27,10 @@ function rootReducer(state = initialState, action) {
       );
 
       if (filteredPokemon.length <= 0) {
-        alert("No hay Pokémon de ese tipo");
+        return {
+          ...state,
+          allPokemon:state.allPokemonCopy
+        }
       }
       return {
         ...state,
@@ -45,7 +48,7 @@ function rootReducer(state = initialState, action) {
       let sortedPokemon = action.payload === "asc" ?
       pokemons.sort((a,b) => a.attack - b.attack) :
       pokemons.sort((a,b) => b.attack - a.attack) 
-      console.log(sortedPokemon);
+
       return {
         ...state,
         allPokemon: sortedPokemon,
@@ -60,42 +63,26 @@ function rootReducer(state = initialState, action) {
           ...state,
           allPokemon:sortedPokeName
         }
+case "FILTER_BY_ORIGIN":
+        let pokemonOrigin = [...state.allPokemonCopy]
+        let createdFiltered;
 
-    // case "POST_POKEMON":
-    //   return {
-    //     ...state,
-    //   }
-    // case "GET_POKEMON_DETAIL":
-    //   return {
-    //     ...state,
-    //     detail: action.payload
-    //   }
-    // case "FILTER_CREATED":
-    //   let copy = state.allPokemonCopy;
-    //   let createdFiltered;
+        if (action.payload ==="custom") {
+          createdFiltered =pokemonOrigin.filter(pokemon => pokemon.custom)
+        }else if (action.payload === "api") {
+          createdFiltered =pokemonOrigin.filter(pokemon => !pokemon.custom)
+        } else {
+          createdFiltered=pokemonOrigin
+        }
+        return {
+          ...state,
+          allPokemon: createdFiltered
+        }
+    case "POSTED_POKEMON":
+      return {
+        ...state,
+      }
 
-    //   if (action.payload === "created") {
-    //     createdFiltered = copy.filter(pokemon => pokemon.custom);
-    //   } else {
-    //     createdFiltered = copy.filter(pokemon => !pokemon.custom);
-    //   }
-
-    //   return {
-    //     ...state,
-    //     allPokemon: action.payload === "all" ? state.allPokemonCopy : createdFiltered
-    //   }
-    // case "ORDER_BY_NAME":
-    //   let sortedName;
-    //   if (action.payload === "asc") {
-    //     sortedName = state.allPokemon.slice().sort((a, b) => a.name.localeCompare(b.name));
-    //   }
-    //   if (action.payload === "des") {
-    //     sortedName = state.allPokemon.slice().sort((a, b) => b.name.localeCompare(a.name));
-    //   }
-    //   return {
-    //     ...state,
-    //     allPokemon: sortedName
-    //   }
     default:
       return state;
   }
