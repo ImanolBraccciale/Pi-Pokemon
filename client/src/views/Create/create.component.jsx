@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { postedPokemon } from "../../redux/actions/actions";
 
 const PostPokemon = () => {
   const dispatch = useDispatch()
@@ -24,16 +24,21 @@ const PostPokemon = () => {
   })
 
   const handleChange = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value
-    })
+
+    if (event.target.name === "name" || event.target.name === "sprites") {
+      setInput({
+        ...input,
+        [event.target.name]: event.target.value
+      })
+    } else {
+      setInput({
+        ...input,
+        [event.target.name]: Number(event.target.value)
+      })
+    }
   }
-
-
   const handleCheckboxChange = (event) => {
-    const selectedType = event.target.value;
-    console.log(selectedType);
+    const selectedType = Number(event.target.value); // Convertir el valor a número
     if (input.types.includes(selectedType)) {
       setInput({
         ...input,
@@ -46,10 +51,36 @@ const PostPokemon = () => {
       });
     }
   };
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    console.log(input, "este es input");
+    console.log(postedPokemon(input), "solo posted con input");
+    console.log(dispatch(postedPokemon()));
+
+
+
+    dispatch(postedPokemon(input))
+
+  }
+
+  // const validation = () => {
+  //   let error = {};
+  //   let noEmpty = /\S+/;
+  //   let validateName = /^[a-zA-ZñÑ]*$/;
+  //   let validateNum = /^\d+$/;
+  //   let validateUrl = /^(ftp|http|https):\/\/[^ "]+$/;
+
+  //   if (!noEmpty.name || !validateName.name || validateName.length >= 3) {
+
+  //   }
+
+  // }
+
 
   return (
     <>
-      <form>
+      <form onSubmit={e => { handleSubmit(e) }}>
         <div>
 
           <label>name</label>
@@ -83,14 +114,14 @@ const PostPokemon = () => {
               <input
                 type="checkbox"
                 value={type.id}
-                checked={input.types.includes(type.id.toString())}
+                checked={input.types.includes(type.id)}
                 onChange={handleCheckboxChange}
               />
               {type.name}
             </label>
           ))}
         </div>
-
+        <button type='submit'>Create!</button>
       </form>
 
     </>

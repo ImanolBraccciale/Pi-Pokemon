@@ -40,9 +40,9 @@ const getNameHandler = async ( req, res) => {
 
 const createPokeHandler = async (req,res) => {
 
- const {pokemon} = req.body
+ 
 try {
-  const newPokemon = await createPokemon(pokemon)
+  const newPokemon = await createPokemon(req)
 
   return res.status(200).json(newPokemon)
 } catch (error) {

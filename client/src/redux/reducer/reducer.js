@@ -81,6 +81,7 @@ case "FILTER_BY_ORIGIN":
     case "POSTED_POKEMON":
       return {
         ...state,
+        
       }
 
     default:

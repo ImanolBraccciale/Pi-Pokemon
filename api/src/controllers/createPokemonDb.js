@@ -1,7 +1,10 @@
 const { Pokemon, Type } = require("../db");
 
-const createPokemonDb = async ({ id, name, sprites, hp, attack, defense, speed, height, weight, types }) => {
+const createPokemonDb = async ( req) => {
+  const { name, sprites, hp, attack, defense, speed, height, weight, types } = req.body
   try {
+    console.log(name);
+    console.log(types);
     const newTypes = await Promise.all(types.map(async (typeId) => {
       const foundType = await Type.findByPk(typeId);
       if (foundType) {
@@ -13,7 +16,7 @@ const createPokemonDb = async ({ id, name, sprites, hp, attack, defense, speed, 
     console.log(newTypes);
 
     const pokemon = await Pokemon.create({
-      id,
+      
       name,
       sprites,
       hp,

@@ -64,29 +64,31 @@ export function filterByOrigin(payload) {
     payload
   }
 }
-
-export function postedPokemon() {
-
+export function postedPokemon(payload) {
   return async function (dispatch) {
-    const response = axios("http://localhost:3001/pokemons")
-    return dispatch({
-      type:'POSTED_POKEMON',
-      payload:response.data
-    })
-  }
-  }
+    try {
+  //        "name":"adaa",
+  //   "hp": 45,
+  //   "attack": 49,
+  //   "defense": 49,
+  //   "speed": 45,
+  //   "height": 7,
+  //   "weight": 69,
+  // "types" : [1,3],
+  //   "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+      console.log(payload);
+      const response = await axios.post("http://localhost:3001/pokemons", payload);
 
-// export function postPokemon(payload) {
-//   return async function (dispatch) {
-//     const response =await axios(`http://localhost:3001/pokemons`,payload)
-
-//     return dispatch({
-//       type:"POST_POKEMON",
-//       payload:response
-//     })
-//   }
-// }
-
+      console.log(response);
+      return dispatch({
+        type: "POSTED_POKEMON", 
+        payload: response.data,
+      });
+    } catch (error) {
+     console.log('Error in posting pokemon',error.message);
+    }
+  };
+}
 
 // export function getPokemonDetail(id) {
 //   return async function (dispatch) {
