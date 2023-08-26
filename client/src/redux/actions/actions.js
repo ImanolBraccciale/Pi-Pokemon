@@ -67,46 +67,31 @@ export function filterByOrigin(payload) {
 export function postedPokemon(payload) {
   return async function (dispatch) {
     try {
-  //        "name":"adaa",
-  //   "hp": 45,
-  //   "attack": 49,
-  //   "defense": 49,
-  //   "speed": 45,
-  //   "height": 7,
-  //   "weight": 69,
-  // "types" : [1,3],
-  //   "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+ 
       console.log(payload);
       const response = await axios.post("http://localhost:3001/pokemons", payload);
 
-      console.log(response);
+ 
       return dispatch({
         type: "POSTED_POKEMON", 
         payload: response.data,
       });
     } catch (error) {
-     console.log('Error in posting pokemon',error.message);
+    return error.message
     }
   };
 }
 
-// export function getPokemonDetail(id) {
-//   return async function (dispatch) {
-//     const response =await axios(`http://localhost:3001/pokemons/${id}`)
-
-//     return dispatch({
-//       type:"GET_POKEMON_DETAIL",
-//       payload:response.data
-//     })
-//   }
-// }
-
-
-// export function filterCreated(payload) {
-//   return {
-//     type : 'FILTER_CREATED',  
-//     payload
-//   }
-// }
+export function getPokemonDetail(id) {
+  console.log(id,"id");
+  return async function (dispatch) {
+    const response = await axios.get(`http://localhost:3001/pokemons/${id}`)
+    console.log(response);
+    return dispatch({
+      type:"GET_POKEMON_DETAIL",
+      payload:response.data,
+    })
+  }
+ }
 
  

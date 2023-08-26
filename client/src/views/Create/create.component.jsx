@@ -37,6 +37,7 @@ const PostPokemon = () => {
       })
     }
   }
+
   const handleCheckboxChange = (event) => {
     const selectedType = Number(event.target.value); // Convertir el valor a número
     if (input.types.includes(selectedType)) {
@@ -51,6 +52,7 @@ const PostPokemon = () => {
       });
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault()
 

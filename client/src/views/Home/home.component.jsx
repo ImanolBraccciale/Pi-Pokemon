@@ -19,6 +19,7 @@ function Home() {
       <h1>Bienvenido a la Pokédex</h1>
       <Navbar />
       <Cards allPokemons={allPokemons} />
+
     </div>
   );
 }

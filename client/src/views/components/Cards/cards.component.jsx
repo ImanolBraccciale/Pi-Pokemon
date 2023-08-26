@@ -1,16 +1,15 @@
 import Card from "../Card/card.component"
+import { Link } from "react-router-dom";
 
 function Cards({ allPokemons }) {
-
-  const pokeList = allPokemons
-
   return (
     <div>
-      {pokeList?.map((pokemon) => (
-        <Card pokemon={pokemon} key={pokemon.id} id={pokemon.id} />
+      {allPokemons?.map((pokemon) => (
+        <Link to={`/home/${pokemon.id}`} key={pokemon.id}>
+          <Card pokemon={pokemon} />
+        </Link>
       ))}
     </div>
-  )
+  );
 }
-
 export default Cards

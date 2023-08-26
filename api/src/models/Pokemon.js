@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
        allowNull:false
     },
     hp:{
-       type:DataTypes.STRING,
+       type:DataTypes.INTEGER,
        allowNull:false,
         validate: { //quiero que sean positivos del 0 al 999
         min: 0,
@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       }
     },
     attack:{
-        type:DataTypes.STRING,
+        type:DataTypes.INTEGER,
        allowNull:false,
         validate: {
         min: 0,
@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
       }
     },
     defense:{
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
        allowNull:false,
         validate: {
         min: 0,
@@ -44,21 +44,21 @@ module.exports = (sequelize) => {
       }
     },
     speed:{
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
        validate: {
         min: 0,
         max: 999
       }
     },
     height:{
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
        validate: {
         min: 0,
         max: 999
       }
     },
     weight:{
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
        validate: {
         min: 0,
         max:9999

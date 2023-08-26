@@ -83,6 +83,11 @@ case "FILTER_BY_ORIGIN":
         ...state,
         
       }
+    case "GET_POKEMON_DETAIL":
+      return {
+        ...state,
+        detail:action.payload
+      }
 
     default:
       return state;
