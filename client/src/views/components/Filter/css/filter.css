@@ -1,0 +1,17 @@
+/* filter.css */
+
+/* Estilos generales para los componentes de filtro */
+
+.filter label {
+  margin-right: 5px;
+}
+
+.filter select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Estilos específicos para cada filtro */
+/* Puedes agregar estilos específicos para FilterByOrigin, FilterName, FilterAttack, etc. aquí */

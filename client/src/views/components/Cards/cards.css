@@ -1,0 +1,31 @@
+/* cards.css */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cartas de tamaño mínimo de 200px */
+  gap: 20px;
+  margin-top: 20px;
+  padding: 0 20px; /* Agrega margen a los lados para evitar que las cartas excedan el tamaño de pantalla */
+  box-sizing: border-box;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Estilos para el componente Card */
+.card {
+  background-color:  #261c428a;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Más estilos para el contenido de la carta según tus necesidades */

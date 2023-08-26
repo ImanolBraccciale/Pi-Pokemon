@@ -8,11 +8,9 @@ function Detail(pokemon) {
   const dispatch = useDispatch()
   const pokemonID = useSelector(state => state.detail)
 
-  console.log(pokemon.match.params.id);
-  useEffect(() => {
 
+  useEffect(() => {
     dispatch(getPokemonDetail(pokemon.match.params.id))
-    console.log(dispatch(getPokemonDetail(pokemon.match.params.id)), "dispatch");
   }, [dispatch, pokemon.match.params.id])
 
   return (
@@ -25,6 +23,7 @@ function Detail(pokemon) {
       <p>Speed:{pokemonID.speed}</p>
       <p>Height:{pokemonID.height}</p>
       <p>Weight:{pokemonID.weight}</p>
+      <p>Types:{pokemonID.types}</p>
     </div>
   )
 }

@@ -1,48 +1,46 @@
 import React, { useState } from "react";
-import { getPokemonByName, getPokemon } from "../../../redux/actions/actions"
+import { getPokemonByName, getPokemon } from "../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
+import "./search.css";
+
 function Search() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
 
   const handleChange = (event) => {
-
     if (event.target.value === "") {
-      dispatch(getPokemon)
+      dispatch(getPokemon);
     }
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleSearch = () => {
-    dispatch(getPokemonByName(name))
-  }
+    dispatch(getPokemonByName(name));
+  };
+
   const handleOnSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (name.length !== 0) {
-      handleSearch()
+      handleSearch();
     }
-  }
+  };
 
   return (
     <div className="search-box">
-
-      <div>
-        <form onSubmit={handleOnSubmit}>
-
-          <input
-            type="search"
-            onChange={handleChange}
-            value={name}
-            placeholder='Ingrese un nombre de pokemon'
-          />
-          <button type="submit">
-            Buscar
-          </button>
-        </form>
-      </div>
-
+      <form onSubmit={handleOnSubmit} className="search-form">
+        <input
+          type="search"
+          onChange={handleChange}
+          value={name}
+          placeholder="Ingrese un nombre de Pokémon"
+          className="search-input"
+        />
+        <button type="submit" className="search-button">
+          Buscar
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;

@@ -1,0 +1,116 @@
+/* card.css */
+.card {
+  background-color: #261c42;
+  border-radius: 10px;
+  padding: 10px;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  height: 100%; /* Ajusta la altura según tus preferencias */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.card-types {
+  display: flex;
+  justify-content: center;
+}
+
+.card-type {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+.card-type.normal {
+  background-color: #a8a878; /* Normal */
+}
+
+.card-type.fighting {
+  background-color: #c03028; /* Lucha */
+}
+
+.card-type.flying {
+  background-color: #a890f0; /* Volador */
+}
+
+.card-type.poison {
+  background-color: #a040a0; /* Veneno */
+}
+
+.card-type.ground {
+  background-color: #e0c068; /* Tierra */
+}
+
+.card-type.rock {
+  background-color: #b8a038; /* Roca */
+}
+
+.card-type.bug {
+  background-color: #a8b820; /* Bicho */
+}
+
+.card-type.ghost {
+  background-color: #705898; /* Fantasma */
+}
+
+.card-type.steel {
+  background-color: #b8b8d0; /* Acero */
+}
+
+.card-type.fire {
+  background-color: #f08030; /* Fuego */
+}
+
+.card-type.water {
+  background-color: #6890f0; /* Agua */
+}
+
+.card-type.grass {
+  background-color: #5db454; /* Planta */
+}
+
+.card-type.electric {
+  background-color: #f8d030; /* Eléctrico */
+}
+
+.card-type.psychic {
+  background-color: #f85888; /* Psíquico */
+}
+
+.card-type.ice {
+  background-color: #98d8d8; /* Hielo */
+}
+
+.card-type.dragon {
+  background-color: #7038f8; /* Dragón */
+}
+
+.card-type.dark {
+  background-color: #705848; /* Siniestro */
+}
+
+.card-type.fairy {
+  background-color: #ee99ac; /* Hada */
+}
+
+.card-type.unknown {
+  background-color: #68a090; /* Desconocido */
+}
+
+.card-type.shadow {
+  background-color: #5c546a; /* Sombra */
+}

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom"
+import "./landing.css";
+
 function landing(params) {
   return (
     <div className="landing">
-      <p>Este es el landing</p>
+      <span className='Creador'>Created By Imanol</span>
+      <div className='pokelogo' alt="landing" />
       <Link to="/home">
-        <button>Home</button>
+        <button className='start'>Start</button>
       </Link>
     </div>
   )

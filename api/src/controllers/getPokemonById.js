@@ -6,6 +6,7 @@ const getPokemonById = async (req) => {
   const { id } = req.params;
  
     if (isNaN(id)) {
+      //este findALL trae un array, el findOne trae un objeto
       const [pokemonDB] = await Pokemon.findAll({
         where: { id:id },
         include: { model: Type, attributes: ['name',"id"], through: { attributes: [] } }

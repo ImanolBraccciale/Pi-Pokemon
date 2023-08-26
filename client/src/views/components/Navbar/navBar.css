@@ -1,0 +1,32 @@
+/* navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos de forma uniforme */
+  align-items: center;
+  background-color: #261c42;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-item {
+
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;
+  margin: 0 10px;
+}
+
+.create-button {
+  padding: 6px 12px; /* Ajusta el tamaño del padding */
+  font-size: 14px; /* Ajusta el tamaño de la fuente */
+  background-color: #f08030;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create-button:hover {
+  background-color: #d06020;
+}

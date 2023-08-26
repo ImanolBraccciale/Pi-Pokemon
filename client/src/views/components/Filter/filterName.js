@@ -1,26 +1,28 @@
+// FilterName.js
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {orderByName  } from "../../../redux/actions/actions";
-const FilterName = () => {
-  
-  const dispatch= useDispatch()
-  const [selectedName,setSelectedAttack] = useState()
+import { orderByName } from "../../../redux/actions/actions";
+import "./css/filter.css"; // Importar los estilos CSS
 
-  const handleNameChange = (event) =>{
-    const name = event.target.value
-    setSelectedAttack(name)
-    dispatch(orderByName(name)) //agregar ela action
-  }
+const FilterName = () => {
+  const dispatch = useDispatch();
+  const [selectedName, setSelectedName] = useState();
+
+  const handleNameChange = (event) => {
+    const name = event.target.value;
+    setSelectedName(name);
+    dispatch(orderByName(name));
+  };
 
   return (
-    <div>
+    <div className="filter"> {/* Aplicar la clase "filter" aquí */}
       <label>Nombre:</label>
-      <select onChange={(event) =>handleNameChange(event)} value={selectedName}>
+      <select onChange={handleNameChange} value={selectedName}>
         <option value="asc">Ascendente</option>
         <option value="des">Descendente</option>
       </select>
     </div>
-  )
+  );
 }
 
-export default FilterName
+export default FilterName;
