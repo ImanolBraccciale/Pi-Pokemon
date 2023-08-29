@@ -17,9 +17,9 @@ const FilterComponent = () => {
 
   return (
     <div className="filter">
-      <label>Tipo:</label>
+      <label>Types:</label>
       <select onChange={(e) => handleFilterChange(e)} value={selectedType}>
-        <option value="all">Todos</option>
+        <option value="all">All</option>
         {allTypes.map((type) => (
           <option
             name={type.name}

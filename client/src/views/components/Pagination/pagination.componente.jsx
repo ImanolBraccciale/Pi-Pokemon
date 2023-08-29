@@ -1,5 +1,5 @@
 import React from "react";
-import "./pagination.css"; // Agrega tus estilos CSS aquí
+import "./pagination.css"; // Add your CSS styles here
 
 const Pagination = ({ pagination, page, allPokemons, pokeXPage }) => {
   let totalPage = [];
@@ -10,6 +10,7 @@ const Pagination = ({ pagination, page, allPokemons, pokeXPage }) => {
   return (
     <div className="pagination-container">
       <ul className="pagination-list">
+
         {totalPage.map((num) => (
           <li key={num} className="pagination-item">
             <button
@@ -20,6 +21,7 @@ const Pagination = ({ pagination, page, allPokemons, pokeXPage }) => {
             </button>
           </li>
         ))}
+
       </ul>
     </div>
   );

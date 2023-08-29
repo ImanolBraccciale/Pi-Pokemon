@@ -15,9 +15,18 @@ function Home() {
   const indexOfLastPokemon = currentPage * pokeXPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokeXPage;
   const currentPokemons = allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
+  const totalPages = Math.ceil(allPokemons.length / pokeXPage);
 
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
   };
 
   useEffect(() => {
@@ -30,20 +39,40 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div className="home">
-      <Navbar />
-      <div className="content">
-        <h1>Bienvenido a la Pokédex</h1>
-        <Cards currentPokemons={currentPokemons} />
-        <Pagination
-          pagination={pagination}
-          allPokemons={allPokemons.length}
-          pokeXPage={pokeXPage}
-          page={currentPage}
-        />
+    <div>
+      <div className="home">
+        <Navbar />
+        <div className="content">
+          <h1>Welcome To Pokedex</h1>
+          <Cards currentPokemons={currentPokemons} />
+          <Pagination
+            pagination={pagination}
+            allPokemons={allPokemons.length}
+            pokeXPage={pokeXPage}
+            page={currentPage}
+            totalPages={totalPages}
+          />
+          <div className="pagination-buttons">
+            <button
+              className="pagination-button"
+              onClick={goToFirstPage}
+              disabled={currentPage === 1}
+            >
+              First Page
+            </button>
+            <button
+              className="pagination-button"
+              onClick={goToLastPage}
+              disabled={currentPage === totalPages}
+            >
+              Last Page
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 
 export default Home;

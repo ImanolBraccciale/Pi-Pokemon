@@ -6,6 +6,8 @@ import Detail from "./views/Detail/detail.component";
 import Create from "./views/Create/create.component";
 import Landing from "./views/Landing/landing.component";
 
+// me falta arreglar el search, que me lo busque por mayuscula, el diseño del form,optimizar cosas
+
 
 function App() {
   return (

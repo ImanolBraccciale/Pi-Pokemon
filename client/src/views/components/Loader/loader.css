@@ -1,0 +1,14 @@
+.loading {
+  background-image: url("./pokeball.gif");
+  background-size: contain;
+  width: 200px; /* Set the width to 200px */
+  height: 200px; /* Set the height to 200px */
+  position: absolute; /* Position in the center of the page */
+  top: 50%; /* Move to the vertical center */
+  left: 50%; /* Move to the horizontal center */
+  transform: translate(-50%, -50%); /* Center using translate */
+  
+  /* Animation properties */
+  animation:  2s linear infinite; /* Animation name, duration, timing function, and iteration count */
+}
+

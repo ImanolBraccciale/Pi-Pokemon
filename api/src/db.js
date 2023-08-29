@@ -1,9 +1,8 @@
 require('dotenv').config(); //sirve para leer el archivo .env con el usuario, password y puerto. 
-const { Sequelize } = require('sequelize'); //importamos a sequelize para poder comunicar entre query y javascript
+const { Sequelize,Op  } = require('sequelize'); //importamos a sequelize para poder comunicar entre query y javascript
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env; //sirve para traernos la info que está en el archivo .env
-
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const sequelize = new Sequelize( //instanciamos a sequelize con new, acá estamos conectando al server con la db, en este caso con postgres con las coordenandas de las claves y todo eso. 
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
    {
@@ -50,4 +49,5 @@ Type.belongsToMany(Pokemon, { through: "poke_type"})
 module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
+   Op:Op
 };

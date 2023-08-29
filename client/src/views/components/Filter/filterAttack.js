@@ -16,7 +16,7 @@ const FilterAttack = () => {
 
   return (
     <div className="filter">
-      <label>Ataque:</label>
+      <label>Attack:</label>
       <select onChange={handleAttackChange} value={selectedAttack}>
         <option value="asc">Ascendente</option>
         <option value="des">Descendente</option>

@@ -1,0 +1,74 @@
+ .container{
+  background-image: url("./create.webp");
+   background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh; 
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ /* Styling for the form container */
+.form-container {
+ background-color: #d8e3eb;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for input fields */
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: dodgerblue;
+}
+
+/* Styling for validation error messages */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Styling for checkboxes */
+.checkbox-container {
+  margin-top: 10px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Styling for the submit button */
+.submit-button {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #007acc;
+}

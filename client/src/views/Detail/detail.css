@@ -1,0 +1,55 @@
+.pokedex {
+  background-image: url("../../img/details/pkdx.jpg");
+  background-position: center center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgb(113, 177, 97);
+}
+
+.detail {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30px;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: small;
+}
+
+.detail img {
+  max-width: 200px;
+}
+
+.properties-column {
+  display: flex;
+}
+
+.properties-column p {
+  margin-left: 20px;
+}
+
+.detail h3 {
+  position: absolute;
+  top: 105%;
+}
+
+.types {
+  position: absolute;
+  top: 123.4%;
+  left: 0;
+}
+ 

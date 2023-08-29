@@ -16,7 +16,7 @@ const FilterName = () => {
 
   return (
     <div className="filter"> {/* Aplicar la clase "filter" aquí */}
-      <label>Nombre:</label>
+      <label>Name:</label>
       <select onChange={handleNameChange} value={selectedName}>
         <option value="asc">Ascendente</option>
         <option value="des">Descendente</option>

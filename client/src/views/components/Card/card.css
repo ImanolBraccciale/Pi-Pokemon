@@ -26,6 +26,7 @@
 .card-types {
   display: flex;
   justify-content: center;
+  overflow:auto ;
 }
 
 .card-type {
@@ -33,6 +34,7 @@
   border-radius: 5px;
   margin: 5px;
   font-size: 12px;
+  
 }
 
 .card-type.normal {

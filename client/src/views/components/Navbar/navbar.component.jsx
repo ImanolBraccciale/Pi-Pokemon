@@ -12,9 +12,9 @@ function Navbar({ onSearch }) {
   return (
     <div className="navbar">
       <FilterByOrigin className="navbar-item" />
+      <FilterComponent className="navbar-item" />
       <FilterName className="navbar-item" />
       <FilterAttack className="navbar-item" />
-      <FilterComponent className="navbar-item" />
       <Search onSearch={onSearch} className="navbar-item" />
       <Link to="/create" className="create-button navbar-item">
         Create
