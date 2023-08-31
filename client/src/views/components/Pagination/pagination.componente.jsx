@@ -1,5 +1,5 @@
 import React from "react";
-import "./pagination.css"; // Add your CSS styles here
+import "./pagination.css";
 
 const Pagination = ({ pagination, page, allPokemons, pokeXPage }) => {
   let totalPage = [];

@@ -1,4 +1,3 @@
-// Home.js
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemon, getTypes } from "../../redux/actions/actions";
@@ -50,7 +49,6 @@ function Home() {
             allPokemons={allPokemons.length}
             pokeXPage={pokeXPage}
             page={currentPage}
-            totalPages={totalPages}
           />
           <div className="pagination-buttons">
             <button

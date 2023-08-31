@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterByOriginAndType } from "../../../redux/actions/actions";
 import "./css/filter.css";
 
-const FilterByOrigin = () => {
+const FilterByOriginType = () => {
   const [selectedOrigin, setSelectedOrigin] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const allTypes = useSelector((state) => state.types);
@@ -55,6 +55,6 @@ const FilterByOrigin = () => {
   };
 
 
-  export default FilterByOrigin
+  export default FilterByOriginType
 
  

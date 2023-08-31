@@ -1,5 +1,5 @@
 
-let initialState= {allPokemon:[],allPokemonCopy:[], types:[], detail:[],empty:[]}
+let initialState= {allPokemon:[],allPokemonCopy:[], types:[], detail:[],}
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -44,24 +44,23 @@ function rootReducer(state = initialState, action) {
           allPokemon:sortedPokeName
         } 
         case "FILTER_BY_ORIGIN_AND_TYPE":
-  const { origin, type } = action.payload; // Aquí se espera que payload tenga la forma { origin: "custom" o "api", type: ID del tipo }
+  const { origin, type } = action.payload;  
   
   let filteredPokemonOrigin = [...state.allPokemonCopy];
   let combinedFilteredPokemon = filteredPokemonOrigin;
 
-  // Aplicar filtro por origen
   if (origin === "custom") {
     combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon => pokemon.hasOwnProperty("custom"));
   } else if (origin === "api") {
     combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon => !pokemon.hasOwnProperty("custom"));
   }
 
-  // Aplicar filtro por tipo
-  if (type) {
-    combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon =>
-      pokemon.types.some(({ id }) => id === parseInt(type))
-    );
-  }
+if (type && type !== "all") {
+  combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon =>
+    pokemon.types.some(({ id }) => id === parseInt(type))
+  );
+}
+
 
   return {
     ...state,

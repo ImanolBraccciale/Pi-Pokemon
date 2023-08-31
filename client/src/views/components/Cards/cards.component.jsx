@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../Card/card.component";
 import { Link } from "react-router-dom";
-import "./cards.css"; // Agrega tus estilos CSS aquí
+import "./cards.css";
 import Loader from "../Loader/loader"
 function Cards({ currentPokemons }) {
   return (
