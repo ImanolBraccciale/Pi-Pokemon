@@ -27,25 +27,4 @@ const newTypes = types.map(({type}) => {
 
 module.exports = mapPokemon
 
-
-//VERSION DE EMA PUTO
-
-// async function getPokemon(req, res) {
-//   try {
-//     let params;
-//     if (req.params.hasOwnProperty("id")) {
-//       params = req.params.id;
-//     }
-//     if (req.query.hasOwnProperty("name")) {
-//       params = req.query.name;
-//     }
-//     const data = await httpRequest(`${URL_API_NAME}${params}`); //solicitud axios
-
-//     if (data?.message) throw Error(data.message);
-
-//     const pokemon = formatPokemonBuilder(data); //saca las cosas que no uso del la respuesta de la api.
-//     res.status(200).json(pokemon);
-//   } catch (error) {
-//     res.status(404).json(error.message);
-//   }
-// }
+ 

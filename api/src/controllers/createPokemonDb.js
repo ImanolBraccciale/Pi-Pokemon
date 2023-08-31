@@ -4,7 +4,7 @@ const createPokemonDb = async ( req) => {
   const { name, sprites, hp, attack, defense, speed, height, weight, types } = req.body
   try {
 
-      const numericHp = Number(hp);
+  const numericHp = Number(hp);
   const numericAttack = Number(attack);
   const numericDefense = Number(defense);
   const numericSpeed = Number(speed);
@@ -19,8 +19,6 @@ const createPokemonDb = async ( req) => {
       }
       return null;
     }));
-
-    console.log(newTypes);
  const pokemon = await Pokemon.create({
       name,
       sprites,

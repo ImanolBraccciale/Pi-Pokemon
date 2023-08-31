@@ -3,8 +3,8 @@ import "./pagination.css"; // Add your CSS styles here
 
 const Pagination = ({ pagination, page, allPokemons, pokeXPage }) => {
   let totalPage = [];
-  for (let i = 0; i < Math.ceil(allPokemons / pokeXPage); i++) {
-    totalPage.push(i + 1);
+  for (let i = 1; i < Math.ceil(allPokemons / pokeXPage); i++) {
+    totalPage.push(i);
   }
 
   return (

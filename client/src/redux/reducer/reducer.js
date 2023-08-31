@@ -1,5 +1,5 @@
 
-let initialState= {allPokemon:[],allPokemonCopy:[], types:[], detail:[]}
+let initialState= {allPokemon:[],allPokemonCopy:[], types:[], detail:[],empty:[]}
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -9,33 +9,13 @@ function rootReducer(state = initialState, action) {
         allPokemon: action.payload,
         allPokemonCopy: action.payload,
         detail: []
+
       }
       case "GET_TYPES":
       return {
         ...state,
         types : action.payload
-      }
-      case "FILTER_BY_TYPE":
-      const typeFiltered = action.payload;
-      
-      const filteredPokemon = state.allPokemonCopy.filter(
-        (pokemon) =>
-          pokemon.types.some(({id}) =>{
-
-            return id === parseInt(typeFiltered)
-            }) 
-      );
-
-      if (filteredPokemon.length <= 0) {
-        return {
-          ...state,
-          allPokemon:state.allPokemonCopy
-        }
-      }
-      return {
-        ...state,
-        allPokemon: filteredPokemon,
-      };
+      } 
     case "GET_POKEMON_NAME":
       return {
         ...state,
@@ -62,22 +42,32 @@ function rootReducer(state = initialState, action) {
         return{
           ...state,
           allPokemon:sortedPokeName
-        }
-case "FILTER_BY_ORIGIN":
-        let pokemonOrigin = [...state.allPokemonCopy]
-        let createdFiltered;
+        } 
+        case "FILTER_BY_ORIGIN_AND_TYPE":
+  const { origin, type } = action.payload; // Aquí se espera que payload tenga la forma { origin: "custom" o "api", type: ID del tipo }
+  
+  let filteredPokemonOrigin = [...state.allPokemonCopy];
+  let combinedFilteredPokemon = filteredPokemonOrigin;
 
-        if (action.payload ==="custom") {
-          createdFiltered =pokemonOrigin.filter(pokemon => pokemon.custom)
-        }else if (action.payload === "api") {
-          createdFiltered =pokemonOrigin.filter(pokemon => !pokemon.custom)
-        } else {
-          createdFiltered=pokemonOrigin
-        }
-        return {
-          ...state,
-          allPokemon: createdFiltered
-        }
+  // Aplicar filtro por origen
+  if (origin === "custom") {
+    combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon => pokemon.hasOwnProperty("custom"));
+  } else if (origin === "api") {
+    combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon => !pokemon.hasOwnProperty("custom"));
+  }
+
+  // Aplicar filtro por tipo
+  if (type) {
+    combinedFilteredPokemon = combinedFilteredPokemon.filter(pokemon =>
+      pokemon.types.some(({ id }) => id === parseInt(type))
+    );
+  }
+
+  return {
+    ...state,
+    allPokemon: combinedFilteredPokemon
+  };
+
     case "POSTED_POKEMON":
       return {
         ...state,
@@ -88,6 +78,7 @@ case "FILTER_BY_ORIGIN":
         ...state,
         detail:action.payload
       }
+      
 
     default:
       return state;

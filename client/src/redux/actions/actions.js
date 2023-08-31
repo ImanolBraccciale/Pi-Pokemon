@@ -23,13 +23,16 @@ export function getTypes() {
   }
 }
 
-export function filterType(payload) {
-
+ export function filterByOriginAndType(origin, type) {
   return {
-    type: "FILTER_BY_TYPE",
-    payload:payload
-  }
+    type: "FILTER_BY_ORIGIN_AND_TYPE",
+    payload: {
+      origin,
+      type,
+    },
+  };
 }
+
 
 export function getPokemonByName(name) {
   return async function (dispatch) {
@@ -57,13 +60,8 @@ export function orderByName(payload) {
 
 }
 
+ 
 
-export function filterByOrigin(payload) {
-  return {
-    type : 'FILTER_BY_ORIGIN',  
-    payload
-  }
-}
 export function postedPokemon(payload) {
   return async function (dispatch) {
     try {
@@ -83,7 +81,6 @@ export function postedPokemon(payload) {
 }
 
 export function getPokemonDetail(id) {
-  console.log(id,"id");
   return async function (dispatch) {
     const response = await axios.get(`http://localhost:3001/pokemons/${id}`)
     console.log(response);

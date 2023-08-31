@@ -5,10 +5,8 @@ const  getPokemonByName  = require("../controllers/getPokemonByName")
 const createPokemon   = require("../controllers/createPokemonDb")
 
 const getPokemonHandler = async ( req,res) => {
-  const {name} = req.query;
-
 try {
-  const response = name ? await getPokemonByName(name) : await getAllPokemons()
+  const response = await getAllPokemons()
           res.status(200).json(response);
     } catch (error) {
   return res.status(500).json({error:error.message})
@@ -40,7 +38,6 @@ const getNameHandler = async ( req, res) => {
 
 const createPokeHandler = async (req,res) => {
 
- 
 try {
   const newPokemon = await createPokemon(req)
 

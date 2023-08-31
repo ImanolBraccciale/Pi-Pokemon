@@ -36,7 +36,7 @@ function Search() {
           className="search-input"
         />
         <button type="submit" className="search-button">
-          Buscar
+          Search
         </button>
       </form>
     </div>

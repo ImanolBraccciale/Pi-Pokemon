@@ -23,10 +23,8 @@ const getPokemonByName = async (req, res) => {
 
     if (pokemon) {
       const pok = mapPokemon(pokemon);
-      return [pok]; // Returning as an array for consistent structure
+      return [pok];  
     }
-
-    // If no data found, you might want to handle this case too
     return []; // Returning an empty array if no data found
 
   } catch (error) {

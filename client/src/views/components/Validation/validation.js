@@ -32,7 +32,7 @@
     if (!validateNum.test(input.height) || parseInt(input.height) < 1 || parseInt(input.height) > 999) {
       errors.height = "ingrese un Height entre 1 y 999"
     }
-    if (!validateNum.test(input.weight) || parseInt(input.weight) < 1 || parseInt(input.weight) > 999) {
+    if (!validateNum.test(input.weight) || parseInt(input.weight) < 1 || parseInt(input.weight) > 9999) {
       errors.weight = "ingrese un Weight entre 1 y 999"
     }
     return errors

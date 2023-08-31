@@ -34,7 +34,8 @@ const PostPokemon = () => {
       !errors.speed &&
       !errors.height &&
       !errors.weight &&
-      !errors.sprites) {
+      !errors.sprites &&
+      input.types.length >= 2) {
 
       dispatch(postedPokemon(input))
 
@@ -49,6 +50,7 @@ const PostPokemon = () => {
         types: [],
         sprites: ''
       });
+
     }
   }
 
@@ -117,15 +119,15 @@ const PostPokemon = () => {
           <input type="number" value={input.defense} name='defense' placeholder="defense..." onChange={e => { handleChange(e) }} onBlur={handleBlur} className="form-input" />
           <p className="error-message">{errors.defense}</p>
 
-          <label className="form-label">peed</label>
+          <label className="form-label">Speed</label>
           <input type="number" value={input.speed} name='speed' placeholder="speed..." onChange={e => { handleChange(e) }} onBlur={handleBlur} className="form-input" />
           <p className="error-message">{errors.speed}</p>
 
-          <label className="form-label">height</label>
+          <label className="form-label">Height</label>
           <input type="number" value={input.height} name='height' placeholder="height..." onChange={e => { handleChange(e) }} onBlur={handleBlur} className="form-input" />
           <p className="error-message">{errors.height}</p>
 
-          <label className="form-label">weight</label>
+          <label className="form-label">Weight</label>
           <input type="number" value={input.weight} name='weight' placeholder="weight..." onChange={e => { handleChange(e) }} onBlur={handleBlur} className="form-input" />
           <p className="error-message">{errors.weight}</p>
 
@@ -143,6 +145,9 @@ const PostPokemon = () => {
               {type.name}
             </label>
           ))}
+          {input.types.length < 2 && (
+            <p className="error-message">Please select at least 2 types.</p>
+          )}
         </div>
         <button type="submit" className="submit-button">Create!</button>
       </form>

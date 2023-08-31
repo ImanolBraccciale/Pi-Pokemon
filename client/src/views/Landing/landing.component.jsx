@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./landing.css";
 
-function landing(params) {
+function landing() {
   return (
     <div className="landing">
       <span className='Creador'>Created By Imanol</span>
