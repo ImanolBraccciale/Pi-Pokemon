@@ -18,7 +18,7 @@ function Detail(pokemon) {
     <div className="pokedex">
       <div className="detail">
         <Link to="/home">
-          <button >back</button>
+          <button className='buttonDetail' >back</button>
         </Link>
         <img src={pokemonID.sprites} alt="Pokemon Sprite" />
         <div className="properties-column">

@@ -52,4 +52,11 @@
   top: 123.4%;
   left: 0;
 }
- 
+ .buttonDetail{
+ border-radius: 10px;
+  background-color: rgb(111, 192, 93);
+  border: 2px;
+  padding: 10px 20px; /* Ajusta el padding para cambiar el tamaño del botón */
+  color: rgb(0, 0, 0); /* Cambia el color del texto dentro del botón */
+  cursor: pointer;
+ }
