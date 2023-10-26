@@ -5,7 +5,7 @@ import Home from "./views/Home/home.component";
 import Detail from "./views/Detail/detail.component";
 import Create from "./views/Create/create.component";
 import Landing from "./views/Landing/landing.component";
-
+axios.defaults.baseURL="http://localhost:3001"
 function App() {
   return (
     <div className="App">
