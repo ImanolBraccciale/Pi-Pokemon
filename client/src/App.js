@@ -6,7 +6,7 @@ import Detail from "./views/Detail/detail.component";
 import Create from "./views/Create/create.component";
 import Landing from "./views/Landing/landing.component";
 import axios from 'axios';
-axios.defaults.baseURL="http://localhost:3001"
+axios.defaults.baseURL="https://pokemon-oa45.onrender.com"
 function App() {
   return (
     <div className="App">
