@@ -18,7 +18,7 @@ server.use(morgan('dev'));
 
 // Use CORS middleware to allow requests from a specific origin
 server.use(cors({
-  origin: 'https://pokemon-rho-ruddy.vercel.app',
+  origin: 'https://pokemon-rho-ruddy.vercel.app/',
   credentials: true,
 }));
 
