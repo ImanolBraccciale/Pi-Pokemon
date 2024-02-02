@@ -17,11 +17,12 @@ server.use(cookieParser());
 server.use(morgan('dev'));
 
 // Use CORS middleware to allow requests from a specific origin
-server.use(cors({
-  origin: 'https://pokemon-rho-ruddy.vercel.app/',
-  credentials: true,
-}));
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://pokemon-rho-ruddy.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 server.use(routes);
 
 // Error catching endware.
