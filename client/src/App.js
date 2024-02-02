@@ -6,8 +6,7 @@ import Detail from "./views/Detail/detail.component";
 import Create from "./views/Create/create.component";
 import Landing from "./views/Landing/landing.component";
 import axios from 'axios';
-axios.defaults.baseURL="https://pi-pokemon-zeta.vercel.app/"
-function App() {
+ function App() {
   return (
     <div className="App">
       <Routes>
