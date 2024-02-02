@@ -4,7 +4,7 @@ import axios from "axios";
 
 export function getPokemon() {
   return async function (dispatch) {
-    const response = await axios("https://pi-pokemon-zeta.vercel.app/pokemons")
+    const response = await axios("/pokemons")
     
     return dispatch({
       type: "GET_POKEMON",
@@ -15,7 +15,7 @@ export function getPokemon() {
 
 export function getTypes() {
   return async function (dispatch) {
-    const response = await axios("https://pi-pokemon-zeta.vercel.app/types")
+    const response = await axios("/types")
     return dispatch({
       type:"GET_TYPES",
       payload:response.data
