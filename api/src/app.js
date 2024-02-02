@@ -17,7 +17,7 @@ server.use(cookieParser());
 server.use(morgan('dev'));
 
 // Use CORS middleware to allow requests from a specific origin
- 
+server.use(cors());
 server.use(routes);
 
 // Error catching endware.
