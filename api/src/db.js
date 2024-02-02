@@ -2,9 +2,9 @@ require('dotenv').config(); //sirve para leer el archivo .env con el usuario, pa
 const { Sequelize,Op  } = require('sequelize'); //importamos a sequelize para poder comunicar entre query y javascript
 const fs = require('fs');
 const path = require('path');
-const {  DB_URL} = process.env;
+const {  DB_URL2} = process.env;
 const sequelize = new Sequelize( //instanciamos a sequelize con new, acá estamos conectando al server con la db, en este caso con postgres con las coordenandas de las claves y todo eso. 
-   `${DB_URL}`,
+   `${DB_URL2}`,
    {
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
